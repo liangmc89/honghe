@@ -1,0 +1,75 @@
+<!-- web-nav -->
+<div class="web-nav-box">
+	<div class="w1200">
+		<div  class="web-nav">
+			<a href="{$Categorys[$bcid][url]}">{$Categorys[$bcid][catname]}&gt;</a>
+			<a href="{$Categorys[$catid][url]}">{$Categorys[$catid][catname]}</a>
+		</div>
+	</div>
+</div>
+<!-- banner -->
+<div class="banner">
+	<img src="{$Categorys[$bcid][image]}">
+</div>
+{$content}
+
+
+<!-- item4 -->
+<div class="item item4" style="background:url(../Public/images/xgfabj.jpg) center center no-repeat">
+	<div class="container">
+		<div class="id-title">
+			<h2>相关方案</h2>
+		</div>
+		<ul class="xgfa clearfix">
+			<YP:list catid="T[m_fangan_catid]" id="r" order="id asc" field="*" limit="6" posid="1">
+			<li >
+				<p class="bgimg">
+					<img src="{$r.thumb}">
+				</p>
+				<a href="{$r.url}">
+					<div class="textbox">
+						<h6>{$r.title}</h6>
+						<div class="text">{$r.content|strip_cut=###,180}</div>
+						<p class="morebtn">查看更多 &nbsp;&gt;</p>
+					</div>
+				</a>
+			</li>
+		</YP:list>
+		</ul>
+	</div>
+</div>
+<!-- item5 -->
+<div class="item item5" style="background:url(../Public/images/fffbj.jpg) center center no-repeat">
+	<div class="container">
+		<div class="id-title">
+			<h2>经典案例</h2>
+		</div>
+		<div class="swiper-container swiper-container1">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide">
+	            	<ul class="row case-list">
+						<YP:list catid="T[m_anli_catid]" id="r" order="id asc" field="*" limit="3" posid="1">
+							<li class="col-md-4 col-sm-6 col-xs-12">
+								<a href="{$r.url}">
+									<img src="{$r.thumb}">
+									<p>{$r.title}</p>
+								</a>
+							</li>
+						</YP:list>
+					</ul>
+	            </div>
+	            <div class="swiper-slide">
+	            	<ul class="row case-list">
+						<YP:list catid="T[m_anli_catid]" id="r" order="id asc" field="*" limit="3" posid="1">
+							<li class="col-md-4 col-sm-6 col-xs-12">
+								<a href="{$r.url}">
+									<img src="{$r.thumb}">
+									<p>{$r.title}</p>
+								</a>
+							</li>
+						</YP:list>
+					</ul>
+	            </div>
+	        </div>
+	    </div>
+</div>

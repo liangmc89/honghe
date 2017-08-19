@@ -1,0 +1,27 @@
+<!-- web-nav -->
+<div class="web-nav-box">
+	<div class="w1200">
+		<div  class="web-nav">
+			<a href="/">宏和首页&gt;</a>
+			<a href="{$Categorys[$catid][url]}">{$Categorys[$catid][catname]}</a>
+		</div>
+	</div>
+</div>
+<!-- main-top -->
+</div>
+<div class="main">
+	<div class="container">
+		<div class="page-info">
+			<h3 class="title">{$title}</h3>
+			{$content}
+			<div class="new-link">
+               <!-- <a href="">上一条：</a>
+                <a href="">下一条：</a>
+				-->
+				
+				上一条：<YP:pre msg="{:L(无)}"/>
+				下一条：<YP:next msg="{:L(无)}"/>
+             </div>
+		</div>
+	</div>
+</div>

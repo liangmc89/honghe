@@ -1,0 +1,64 @@
+
+<style>
+
+.table-list {margin:20px 10px;}
+</style>
+ 
+
+<div class="table-list"> 
+<table width="100%" cellspacing="0">
+ 
+<form action="{:U($module_name.'/do'.$action_name)}" method="post" name="myform"> 
+<input type="hidden" name="moduleid" value="{$moduleid}">
+<input type="hidden" name="iscreatehtml" value="1">
+<input type="hidden" name="forward" value="/index.php?g=Admin&m=Createhtml&a=cate&moduleid=2">
+
+<thead> 
+<tr> 
+<th align="center" width="150">{:L(chose_module)}</th> 
+<th align="center" width="150">选择要转移的栏目</th> 
+<th align="center" width="150">选择所属于的栏目</th> 
+<th align="center" width="150">{:L(chose_manage)}</th> 
+</tr> 
+</thead> 
+<tbody  class="td-line"> 
+	<tr> 
+		<td align="center" rowspan="4"> 
+		<select name="moduleid" id="moduleid"   onchange="change_model(this.value)">
+		<volist name="module" id="vo">
+		{if $vo[id]!=1 and $vo[id]!=6and  $vo[id]!=8}
+		<option value='{$vo.id}' {if $moduleid==$vo[id]}selected=selected{/if}>{$vo.title}</option>
+		{/if}
+		</volist>
+		</td> 
+    </tr> 
+	<tr> 
+		<td align="center" rowspan="4"> 
+		<select name='catid'    title="{:L(category_alt)}"> 
+		{$select_categorys}
+		</td>    
+    </tr>
+	<tr> 
+		<td align="center" rowspan="4"> 
+		<select name='othercatid'     title="{:L(category_alt)}"> 
+		{$select_categorys}
+		</td>    
+    </tr>	
+	<tr>	 
+	 
+      <td>
+	  <input type="checkbox" name="child" value="1" style="margin-left:20px;">是否包含当前栏目下所有子栏目<br/>
+	  <input type="submit" style="margin:20px;" name="dosubmit" value="开始转移产品" class="button" >
+	  </td>
+    </tr>
+	</tbody>
+	</form> 
+</table> 
+ 
+</div>
+<script>
+function change_model(moduleid){
+ window.location.href = "{:U('Createhtml/'.$action_name)}&moduleid="+moduleid+"&menuid="+{$menuid};
+}
+
+</script>

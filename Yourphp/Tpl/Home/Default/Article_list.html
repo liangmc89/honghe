@@ -1,0 +1,44 @@
+<!-- web-nav -->
+<div class="web-nav-box">
+	<div class="w1200">
+		<div  class="web-nav">
+			<a href="/">宏和首页&gt;</a>
+			<a href="{$Categorys[$catid][url]}">{$Categorys[$catid][catname]}</a>
+		</div>
+	</div>
+</div>
+<!-- banner -->
+<div class="banner">
+	<img src="{$Categorys[$bcid][image]}">
+</div>
+<!-- main-top -->
+<div class="main-top">
+	<div class="container">
+		  <YP:subcat catid="$bcid" id="r" key="i">
+			   <a href="{$r.url}" class="">{$r.catname}</a>
+		  </YP:subcat>
+	</div>
+</div>
+<div class="main">
+	<div class="container">
+		<ul class="new-list">
+			<volist name="list" id="r">
+				<li class="clearfix">
+					<a href="{$r.url}"><img src="{$r.thumb}" class="fl"></a>
+					<div class="new-list-r">
+						<a href="{$r.url}" class="h3">{$r.title}</a>
+						<p>{$r.content|strip_cut=###,300}</p>
+						<a href="{$r.url}" class="more">MORE</a>
+					</div>
+				</li>
+			</volist>
+		</ul>
+		<div class="page">
+			{$pages}
+		</div>
+	</div>
+</div>
+
+
+
+

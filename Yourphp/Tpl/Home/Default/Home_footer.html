@@ -1,0 +1,96 @@
+{if $ishome=='home' || $bcid==$T[m_zhineng_catid] || $bcid==$T[m_fangan_catid]}
+<!-- id-item7 -->
+<div class="id-item id-item7">
+    <div class="container">
+        <div class="id-title">
+            <p>PARTNER</p>
+            <h2>合作机构</h2>
+            <img src="../Public/images/partner-icon.png">
+        </div>
+        <div class="small-pic-box">
+            <div class="small-pic">
+                <ul class="small-pic-list clearfix">
+                    <YP:list catid="T[m_hezuo_catid]" id="r" order="id asc" field="*" limit="10">
+                        <li><img src="{$r.thumb}"></li>
+                    </YP:list>
+                </ul>
+            </div>
+            <span class="pleft">&lt;</span>
+            <span class="pright">&gt;</span>
+        </div>
+    </div>
+</div>
+{/if}
+{if $ishome}
+<!-- 友情链接 -->
+<div class="id-item friend-link">
+    <div class="container">
+        <div class="friend-link-title"><span class="id-h3">[友情链接/LINK]</span></div>
+        <div>
+            <YP:link typeid="1" linktype="1" order="id asc">
+                <a href="{$r['siteurl']}" target="_blank">{$r.name}</a>
+            </YP:link>
+        </div>
+    </div>
+</div>
+<!-- 友情链接 -->
+{/if}
+<!-- footer --
+
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="footer-mian">
+            <form action="{:URL('User-Post/insert2')}" method="post" class="footer-form clearfix">
+                <input type="hidden"  name="catid" value="{$catid}" />
+                <input type="hidden"  name="moduleid" value="8" />
+                <input type="hidden"  name="lang" value="1" />
+                <div class="code">
+                    <yp:block pos="wecaht" />
+                    <p>关注宏和科技公众号</p>
+                </div>
+                <h3><img src="../Public/images/zxly.png"></h3>
+                <div class="form-box">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="username" class="name" placeholder="您的尊称 Name">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="email" name="email" class="email" placeholder="您的邮箱 Emall">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="tel" name="telephone" class="tel" placeholder="您的电话 Phone">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="address" class="address" placeholder="您的地址 Address">
+                        </div>
+                    </div>
+                    <textarea placeholder="备注……" name="content"></textarea>
+                </div>
+                <input type="submit" name="" value="提交">
+            </form>
+            <div class="footer-info"><yp:block pos="footer" /></div>
+
+        </div>
+    </div>
+</div>
+<!-- footer fixed-->
+<div class="lfooter">
+    <ul>
+        <li><a href="/"><img src="../Public/images/dbsy.png" ><br>
+            网站首页</a></li>
+        <li><a href="tel:{$phone}"><img src="../Public/images/dbdh.png"><br>
+            电话咨询</a></li>
+        <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$qq}&amp;site=qq&amp;menu=yes" target="_blank"><img src="../Public/images/dbqq.png" ><br>
+            QQ咨询</a></li>
+        <li><a href="{$Categorys[$T[m_contact_catid]][url]}"><img src="../Public/images/dblx.png"><br>
+            {$Categorys[$T[m_contact_catid]][catname]}</a></li>
+    </ul>
+</div>
+<!-- 回到顶部 -->
+<div class="top" id="top"></div>
+<!-- 回到顶部 -->
+</body>
+</html>

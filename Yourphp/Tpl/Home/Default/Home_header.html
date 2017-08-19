@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1.0,width=device-width" name="viewport">
+	<meta name="keywords" content="{$seo_keywords}" />
+	<meta name="description" content="{$seo_description}" />
+	<title>{$seo_title}-{$site_name}</title>
+	<link rel="shortcut icon" type="image/ico" href="">
+	<link rel="stylesheet" type="text/css" href="../Public/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../Public/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../Public/css/index.css">
+	<link rel="stylesheet" type="text/css" href="../Public/css/swiper.min.css">
+	<script type="text/javascript" src="../Public/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../Public/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../Public/js/swiper.min.js"></script>
+	<script type="text/javascript" src="../Public/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="../Public/js/case.js"></script>
+	<script type="text/javascript" src="../Public/js/index.js"></script>
+</head>
+<body>
+
+<!-- header -->
+<div class="header {if $ishome}header1{else}header2{/if}">
+	<div class="container-fluid">
+		<div class="w1200">
+			<a href="{$site_url}" class="company-logo"><img src="{if $ishome}../Public/images/company-logo2.png{else}{$logo}{/if}"></a>
+			<ul class="nav">
+				<YP:subcat catid="0" id="r" key="i">
+				<li class="{if $r[id]==$bcid || ($bcid == 0 && $r[id]==$T[m_home_catid])}on{/if}">
+					<a href="{if $r[id]==$T[m_zhineng_catid] || $r[id]==$T[m_fangan_catid] || $r[id]==$T[m_about_catid]}javascript:void(0){else}{$r.url}{/if}">{$r.catname}</a>
+					{if $r[id]==$T[m_zhineng_catid] || $r[id]==$T[m_fangan_catid] || $r[id]==$T[m_about_catid]}
+						<div class="down-nav">
+							<div class="w1200">
+								<div class="down-item {if $r[id]==$T[m_zhineng_catid]}down-item1{/if}{if $r[id]==$T[m_fangan_catid]}down-item2{/if}{if $r[id]==$T[m_about_catid]}down-item3{/if}">
+
+									{if $r[id]==$T[m_zhineng_catid]}
+										<ul class="clearfix">
+											<YP:subcat catid="$r[id]" id="rd" key="i">
+												<li>
+													<h4>{$rd.catname}</h4>
+													<YP:list name="Product" catid="$rd[id]" id="k" order="id asc" field="*" >
+															<a href="{$k.url}">{$k.title}</a>
+													</YP:list>
+												</li>
+											</YP:subcat>
+										</ul>
+									{/if}
+
+								{if $r[id]==$T[m_fangan_catid]}
+									<YP:list catid="T[m_fangan_catid]" id="k" order="id asc" field="*">
+											<a href="{$k.url}">
+												<img src="../Public/images/icon_01.png">
+												<P>{$k.title}</P>
+											</a>
+									</YP:list>
+								{/if}
+
+								{if $r[id]==$T[m_about_catid]}
+									<ul class="clearfix">
+										<YP:subcat catid="$r[id]" id="rd" key="i">
+										<li>
+											<h4>{$rd.catname}</h4>
+											<YP:subcat catid="$rd[id]" id="rdd" key="i">
+											<a href="{$rdd.url}">{$rdd.catname}</a>
+											</YP:subcat>
+										</li>
+										</YP:subcat>
+									</ul>
+					            {/if}
+
+								</div>
+							</div>
+						</div>
+					{/if}
+
+				</li>
+                </YP:subcat>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- tel header -->
+<div class="tel-header clearfix">
+	<a href="{$site_url}"><img src="{$logo}"></a>
+	<span class="menu"></span>
+</div>
+<!-- tel nav -->
+<div class="tel-nav" id="tel-nav">
+	<ul>
+		<li class="{if $bcid==$T[m_home_catid]}on{/if}"><a href="/">企业首页</a></li>
+		<li class="{if $bcid==$T[m_news_catid]}on{/if}"><a href="{$Categorys[$T[m_news_catid]][url]}">{$Categorys[$T[m_news_catid]][catname]}</a></li>
+		<li class="{if $bcid==$T[m_anli_catid]}on{/if}"><a href="{$Categorys[$T[m_anli_catid]][url]}">{$Categorys[$T[m_anli_catid]][catname]}</a></li>
+		<li class="{if $bcid==$T[m_ruodian_catid]}on{/if}">
+			<a href="javascript:void(0);">{$Categorys[$T[m_ruodian_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:list catid="T[m_ruodian_catid]" id="k" order="id asc" field="*">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.title}</a>
+				</YP:list>
+			</div>
+		</li>
+		<li class="{if $bcid==$T[m_jifang_catid]}on{/if}">
+			<a href="javascript:void(0);">{$Categorys[$T[m_jifang_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:list catid="T[m_jifang_catid]" id="k" order="id asc" field="*">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.title}</a>
+				</YP:list>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:void(0);">{$Categorys[$T[m_anfang_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:list catid="T[m_anfang_catid]" id="k" order="id asc" field="*">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.title}</a>
+				</YP:list>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:void(0);">{$Categorys[$T[m_anli_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:list catid="T[m_anli_catid]" id="k" order="id asc" field="*">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.title}</a>
+				</YP:list>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:void(0);">{$Categorys[$T[m_liaojie_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:subcat catid="T[m_liaojie_catid]" id="k" key="i">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.catname}</a>
+				</YP:subcat>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:void(0);">{$Categorys[$T[m_zhichi_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:subcat catid="T[m_zhichi_catid]" id="k" key="i">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.catname}</a>
+				</YP:subcat>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:void(0);">{$Categorys[$T[m_peixun_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:subcat catid="T[m_peixun_catid]" id="k" key="i">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.catname}</a>
+				</YP:subcat>
+			</div>
+		</li>
+		<li>
+			<a href="javascript:void(0);">{$Categorys[$T[m_shengming_catid]][catname]}<em></em></a>
+			<div class="tel-down-nav">
+				<YP:subcat catid="T[m_shengming_catid]" id="k" key="i">
+					<a href="{$k.url}" class="{if $catid==$k[id]}on{/if}">{$k.catname}</a>
+				</YP:subcat>
+			</div>
+		</li>
+
+	</ul>
+</div>
+
+<!-- header  end-->
+
+
+
+
+
+
+
+
+
+

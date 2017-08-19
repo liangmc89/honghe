@@ -1,0 +1,2 @@
+<?php
+return array ( 'right_name_1' => '产品分类', 'right_name_2' => '联系我们', 'right_name_3' => '友情链接', 'product_type' => '类别', 'm_zhineng_catid' => '21', 'm_fangan_catid' => '14', 'm_about_catid' => '8', 'm_anli_catid' => '27', 'm_news_catid' => '1', 'm_hezuo_catid' => '51', 'm_contact_catid' => '43', 'm_home_catid' => '20', 'm_ruodian_catid' => '22', 'm_jifang_catid' => '23', 'm_anfang_catid' => '24', 'm_liaojie_catid' => '11', 'm_zhichi_catid' => '12', 'm_peixun_catid' => '25', 'm_shengming_catid' => '26', ); ?>

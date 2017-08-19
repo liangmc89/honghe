@@ -1,0 +1,62 @@
+
+<style>
+
+.table-list {margin:20px 10px;}
+</style>
+
+
+<div class="table-list"> 
+
+<div id="infobox" >
+请先<a href="/index.php?g=Admin&m=Createhtml&a=down&moduleid={$moduleid}" style="color:red;">点击下载[{$moudlename}]csv文件</a>，然后按csv文件中的规格输入资料，在上传。最后通过FTP把图片传到相对应的Uploads文件夹中。<br/>备注：图片只填写路径，且图片名称不能带中文，(例如：/Uploads/image.jpg)
+</div> 
+
+<table width="100%" cellspacing="0">
+ 
+<form action="{:U($module_name.'/do'.$action_name)}" method="post" name="myform" enctype="multipart/form-data" > 
+<input type="hidden" name="moduleid" value="{$moduleid}">
+<input type="hidden" name="iscreatehtml" value="1">
+<input type="hidden" name="forward" value="/index.php?g=Admin&m=Createhtml&a=upload&moduleid=2">
+<P></P>
+<thead> 
+<tr> 
+<th align="center" width="150">{:L(chose_module)}</th> 
+<th align="center" width="150">选择所属于的栏目</th> 
+<th align="center" width="150">{:L(chose_manage)}</th> 
+</tr> 
+</thead> 
+<tbody  class="td-line"> 
+	<tr> 
+		<td align="center" rowspan="4"> 
+		<select name="moduleid" id="moduleid"   onchange="change_model(this.value)">
+		<volist name="module" id="vo">
+		{if $vo[id]!=1 and $vo[id]!=6and  $vo[id]!=8}
+		<option value='{$vo.id}' {if $moduleid==$vo[id]}selected=selected{/if}>{$vo.title}</option>
+		{/if}
+		</volist>
+		</td> 
+    </tr> 
+	<tr> 
+		<td align="center" rowspan="4"> 
+		<select name='catid'  title="{:L(category_alt)}"> 
+		{$select_categorys}
+		</td>    
+    </tr>	
+	<tr>	 
+	 
+      <td align="center" rowspan="4"> 
+	  <input type="file" name="file" value="csv文件上传" style="margin:20px;" >
+	  <input type="submit" style="margin:20px;" name="dosubmit" value="开始上传产品" class="button" >
+	  </td>
+    </tr>
+	</tbody>
+	</form> 
+</table> 
+ 
+</div>
+<script>
+function change_model(moduleid){
+ window.location.href = "{:U('Createhtml/'.$action_name)}&moduleid="+moduleid+"&menuid="+{$menuid};
+}
+
+</script>
